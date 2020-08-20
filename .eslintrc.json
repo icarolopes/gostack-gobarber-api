@@ -29,7 +29,8 @@
     ],
     "no-useless-constructor": "off",
     "class-methods-use-this": "off",
-    "camelcase": "off"
+    "camelcase": "off",
+    "@typescript-eslint/camelcase": "off"
   },
   "settings": {
     "import/resolver": {

@@ -15,7 +15,10 @@ export class User {
   name: string
 
   @Column()
-  emaio: string
+  email: string
+
+  @Column()
+  password: string
 
   @CreateDateColumn()
   created_at: Date
