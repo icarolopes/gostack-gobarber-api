@@ -2,11 +2,12 @@ import { Router } from 'express'
 import { parseISO } from 'date-fns'
 import { getCustomRepository } from 'typeorm'
 
-import { AppointmentsRepository } from '../repositories/AppointmentsRepository'
-import { CreateAppointmentService } from '../services/CreateAppointmentService'
-import { ensureAuthenticated } from '../middlewares/ensureAuthenticated'
+import { AppointmentsRepository } from '@modules/appointments/repositories/AppointmentsRepository'
+import { CreateAppointmentService } from '@modules/appointments/services/CreateAppointmentService'
 
-const appointmentsRouter = Router()
+import { ensureAuthenticated } from '@modules/users/infra/http/middlewares/ensureAuthenticated'
+
+export const appointmentsRouter = Router()
 
 appointmentsRouter.use(ensureAuthenticated)
 
@@ -30,5 +31,3 @@ appointmentsRouter.post('/', async (request, response) => {
 
   return response.json(appointment)
 })
-
-export default appointmentsRouter
