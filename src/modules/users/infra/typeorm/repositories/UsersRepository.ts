@@ -3,8 +3,12 @@ import { User } from '../entities/User'
 import { getRepository, Repository } from 'typeorm'
 import { ICreateUserDTO } from '@modules/users/dtos/ICreateUserDTO'
 
-export class UsersRepository implements IUsersRepository {
-  constructor(private ormRepository: Repository<User> = getRepository(User)) {}
+export default class UsersRepository implements IUsersRepository {
+  private ormRepository: Repository<User>
+
+  constructor() {
+    this.ormRepository = getRepository(User)
+  }
 
   public async findById(id: string): Promise<User | undefined> {
     const user = await this.ormRepository.findOne(id)
